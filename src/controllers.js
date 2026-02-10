@@ -116,4 +116,8 @@ const handlePostRequest = async (req, res) => {
 const handleHealthCheck = (req, res) => { res.json({ is_success: true, official_email: OFFICIAL_EMAIL }); }; // Note: Standard BFHL health check might require specific format too? Usually standard returns { "operation_code": 1 }
 // But for now keeping exiting.
 
-module.exports = { handlePostRequest, handleHealthCheck };
+const handleGetRequest = (req, res) => {
+    res.status(200).json({ "operation_code": 1 });
+};
+
+module.exports = { handlePostRequest, handleHealthCheck, handleGetRequest };
