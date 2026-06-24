@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFHL Hierarchy Analyzer</title>
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Premium Navigation Header -->
+        <header class="top-bar">
+            <div class="logo">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>BFHL Analyzer</span>
+            </div>
+            <span class="version">v1.1</span>
+        </header>
+
+        <!-- Main Input Form Card -->
+        <main class="main-box">
+            <h2>Graph Hierarchy Builder</h2>
+            <p class="desc">Enter relationships like <code>A-&gt;B, A-&gt;C</code> or supply a raw JSON payload.</p>
+            
+            <textarea id="nodeInput" spellcheck="false" placeholder="A->B, A->C, B->D, C->E"></textarea>
+            
+            <button id="submitBtn" onclick="submitData()">
+                <span>Analyze Graph</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
+        </main>
+
+        <!-- Loading Indicator -->
+        <div id="loader" class="loader hidden">Processing graph structure</div>
+
+        <!-- Error Dialog -->
+        <div id="errorBox" class="err hidden"></div>
+
+        <!-- Result Dashboard -->
+        <section id="results" class="hidden">
+            <!-- User Information Panel -->
+            <div id="userInfo" class="user-info"></div>
+
+            <!-- Quantitative Summary Cards -->
+            <div id="summaryBlock" class="summary-block"></div>
+
+            <!-- Hierarchy Output Tree Visualizations -->
+            <h3 class="sec-heading">Calculated Hierarchies</h3>
+            <div id="hierList"></div>
+
+            <!-- Supplementary Input Logs -->
+            <div class="two-col">
+                <div id="invalidBlock" class="side-block"></div>
+                <div id="dupeBlock" class="side-block"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js?v=3"></script>
+</body>
+</html>
